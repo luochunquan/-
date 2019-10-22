@@ -1,11 +1,21 @@
 <template name="page-head">
-	<view class="uni-page-head">
-		<view class="uni-page-head-title">{{title}}</view>
+	<view>
+		<view class="status_bar">
+			<!-- 这里是状态栏 -->
+		</view>
+		<view>{{title}}</view>
 	</view>
 </template>
 <script>
 	export default {
-		name: "page-head",
+		data() {
+			return {
+				iStatusBarHeight: 0
+			}
+		},
+		onLoad() {
+			this.iStatusBarHeight = uni.getSystemInfoSync().statusBarHeight
+		},
 		props: {
 			title: {
 				type: String,
